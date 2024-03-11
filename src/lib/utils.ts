@@ -1,6 +1,3 @@
-// In the real world, this should obviously be secured against race conditions and other related issues.
-// As far as I understand, JavaScript is single-threaded, so for incrementing these simple variables, this *should* be ok.
-
 import { getPersonByEmail } from "./db";
 
 export const PORT = 3000;
@@ -16,7 +13,7 @@ export function generatePersonId() {
   return personIdCounter++;
 }
 
-// Apparently there is no native "intersection" method in Javascript.. I'll do this more brute-force
+// Apparently there is no native method for the intersection of sets in Javascript...
 function unionMultipleSets<Type>(sets: Set<Type>[]): Set<Type> {
   return sets.reduce((acc: Set<Type>, current: Set<Type>) => {
     return new Set([...acc].filter((x) => current.has(x)));
@@ -31,6 +28,5 @@ export function findAvailableTimeslots(personEmails: string[]): Set<number> {
     }
     return person.availableTimeslots;
   });
-
   return unionMultipleSets(timeSlotsOfPersons);
 }

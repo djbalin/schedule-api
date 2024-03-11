@@ -1,3 +1,16 @@
+// The implementation for the CLI client.
+// Available commands are:
+
+// ----------------- COMMANDS -----------------
+// ----------------- COMMANDS -----------------
+// create person <name> <email>
+// create meeting <email1> <email2> ... <emailn> ... <beginTime>
+// show persons
+// show meetings
+// show schedule <email>
+// show availability <email1> <email2> ... <emailn>
+// exit
+
 import axios, { AxiosResponse } from "axios";
 import { PORT } from "./utils";
 
@@ -64,16 +77,6 @@ export function launchCLI() {
     input: process.stdin,
     output: process.stdout,
   });
-
-  // ----------------- COMMANDS -----------------
-  // ----------------- COMMANDS -----------------
-  // create person <name> <email>
-  // create meeting <email1> <email2> ... <emailn> ... <beginTime>
-  // show persons
-  // show meetings
-  // show schedule <email>
-  // show availability <email1> <email2> ... <emailn>
-  // exit
 
   printHelp();
   function recursiveAsyncReadLine() {

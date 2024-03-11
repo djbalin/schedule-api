@@ -61,8 +61,8 @@ export function createMeeting(
   };
 
   // Very poor implementation for now. I only want to add the meeting to any of the participants' calendars if *all* the
-  // request participants can attend. This is an poorly performing implementation: two consecutive loops over the participant array,
-  // but for now, it should work.
+  // request participants can attend. This is an poorly performing implementation as it incurs two consecutive loops over the participant array,
+  // but for now it should suffice.
   for (let participant of participants) {
     participant = participant.toLowerCase();
     const person = db.persons.get(participant);
@@ -73,13 +73,3 @@ export function createMeeting(
   meetings.set(meetingId, meeting);
   return true;
 }
-
-// export function getPersons() {
-//   return Array.from(persons.values());
-//   // return persons.values();
-//   // return Array.from(persons.values());
-// }
-
-// export function getMeetings() {
-//   return Array.from(meetings.values());
-// }
