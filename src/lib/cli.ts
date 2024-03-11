@@ -11,6 +11,7 @@
 // show availability <email1> <email2> ... <emailn>
 // exit
 
+// I decided to use axios instead of the native "fetch"
 import axios, { AxiosResponse } from "axios";
 import { PORT } from "./utils";
 
